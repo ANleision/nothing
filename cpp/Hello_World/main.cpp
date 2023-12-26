@@ -2,8 +2,8 @@
 
 void print(const char* message);//告诉编辑器引用另一个cpp文件中定义的哪一个函数，其中message可以不写
 //void prin(const char* message);//一个未被定义的函数
-int main() {
-	std::cout << "Helloworld" << std::endl;
+int main() { 
+	std::cout << "Helloworld" << std::endl;//<<是流运算符，用于重载（没搞懂）
 	//<< 可以理解为一个函数，具体意义是使用命名空间std中的cout函数，打印Helloworld，然后再使用endl函数进行换行
 	//调用标准库的时候使用std，若调用非标准库如iostream.h则不需要使用
 	//或者可以使用 using namespace std 来告诉编辑器要使用std空间中函数

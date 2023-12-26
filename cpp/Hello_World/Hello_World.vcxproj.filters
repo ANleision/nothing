@@ -21,5 +21,16 @@
     <ClCompile Include="function.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="multiple.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="what_in_iostream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="end_of_file.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
