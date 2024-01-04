@@ -11,59 +11,74 @@ df.columns = [
     '面积','人口','GDP','医疗机构数','本科生录取率','车辆数'
 ]# 设定列索引名
 # 计算最大值最小值
+print('每个项目的最大值:')
 print(df.max())
-print('end')
+print('每个项目的最小值:')
 print(df.min())
 # 计算每一列的平均数
+print('每个项目的平均值:')
 average = df.mean()
-# # 计算每一列的方差
+print(average)
+# 计算每一列的方差
+print('每个项目的方差:')
 variance = df.var()
 print(variance)
-# # 以spearman方法计算的相关系数矩阵
+# 以spearman方法计算的相关系数矩阵
 spearman = df.corr(method='spearman')
 spearman.to_excel('spearman.xlsx')# 保存到excel
 # KMO检验
 from factor_analyzer.factor_analyzer import calculate_kmo
 kmo_all, kmo_model = calculate_kmo(df)
+print('kmo检验结果:')
 print(kmo_all)
 # Bartlett's球状检验
 from factor_analyzer.factor_analyzer import calculate_bartlett_sphericity
 chi_square_value, p_value = calculate_bartlett_sphericity(df)
+print('球状检验结果:')
 print(chi_square_value, p_value)
-m, n = np.shape(df)#看行列数
+m, n = np.shape(df)# 看行列数
 data_adjust = []
-avgs = np.tile(average, (m, 1))#均值矩阵
+avgs = np.tile(average, (m, 1))# 均值矩阵
 data_adjust = df - avgs# 去中心化
 from sklearn import preprocessing
+print(df)
 df = preprocessing.scale(df)# 标准化
-# print(df)
+print('标准化后的df:')
+print(df)
 covX = np.around(np.corrcoef(df.T),decimals=3)# 相关系数矩阵
-# print(covX)
-featValue, featVec=  np.linalg.eig(covX.T)  #求解系数相关矩阵的特征值和特征向量
+print('相关系数矩阵:')
+print(covX)
+featValue, featVec=  np.linalg.eig(covX.T)# 求解系数相关矩阵的特征值和特征向量
+print('特征值：')
+print(featValue)
 # 特征值降序
 featValue = sorted(featValue)[::-1]
-# 同样的数据绘制散点图和折线图
+print(featValue)
+# 绘制碎石图
+plt.rcParams['font.sans-serif'] = ['KaiTi']
+plt.rcParams['axes.unicode_minus'] = False# 解决中文乱码问题
 plt.scatter(range(1, df.shape[1] + 1), featValue)
 plt.plot(range(1, df.shape[1] + 1), featValue)
 # 显示图的标题和xy轴的名字
-plt.title(" ")  
-plt.xlabel("Factors")
-plt.ylabel("Eigenvalue")
+plt.title("碎石图")  
+plt.xlabel("成分")
+plt.ylabel("特征根")
 plt.grid()  # 显示网格
 plt.show()  # 显示图形
 # 求特征值贡献度与累计贡献度
 gx = featValue/np.sum(featValue)
+print('gx=')
+print(gx)
 lg = np.cumsum(gx)
+print('lg=')
+print(lg)
 # 求主成分
-k=[i for i in range(len(lg)) if lg[i]<0.85]
+k=[i for i in range(0,len(lg)) if lg[i]<0.85]
 k = list(k)
 print(k)
 # 求主成分对应特征向量矩阵
 selectVec = np.matrix(featVec.T[k]).T
 selectVe=selectVec*(-1)
-# 求主成分得分
-finalData = np.dot(data_adjust,selectVec)
-print(finalData)
 # 绘热力图
 plt.figure(figsize = (14,14))
 ax = sns.heatmap(selectVec, annot=True, cmap="BuPu")
