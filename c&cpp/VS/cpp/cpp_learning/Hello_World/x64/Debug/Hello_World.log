@@ -1,0 +1,2 @@
+﻿  main.cpp
+C:\Users\AMMO\Desktop\github\nothing\cpp\Hello_World\main.cpp(58,13): warning C4305: “初始化”: 从“int”到“bool”截断
