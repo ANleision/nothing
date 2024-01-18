@@ -29,13 +29,39 @@
 // 0b 0 0x(不区分大小写)
 // 短长整形可以类比十进制，不可以使用printf输出整型二进制
 // %o(8) %x(16)
-int main()
-{
-    int number_0b = 0b1001010;
-    int number_0 = 034571;
-    int number_0x = 0X273E91A;
-    printf("a = %#o, b = %o, c = %#o\n", number_0b, number_0, number_0x);
-    printf("a = %d, b = %#d, c = %d\n", number_0b, number_0, number_0x);
-    printf("a = %X, b = %X, c = %#X\n", number_0b, number_0, number_0x);// 如果带上# 则可以输出前缀
-    return 0;
-}
+//int main()
+//{
+//    int number_0b = 0b1001010;
+//    int number_0 = 034571;
+//    int number_0x = 0X273E91A;
+//    printf("a = %#o, b = %o, c = %#o\n", number_0b, number_0, number_0x);
+//    printf("a = %d, b = %#d, c = %d\n", number_0b, number_0, number_0x);
+//    printf("a = %X, b = %X, c = %#X\n", number_0b, number_0, number_0x);// 如果带上# 则可以输出前缀
+//    return 0;
+//}
+
+// C 语言用内存的最高位来区分正负数,0表示正数，1表示负数。所以int可表示数值范围在[-2^31,2^31-1]
+// 一个数字分为符号和数值两部分
+// 不加 unsigned 的数字称为 有符号数，能表示正数和负数，加了 unsigned 的数字称为 无符号数，只能表示正数。
+// 无符号数的输出中，除了%d 变为%u 其余一样
+//int main() {
+//    // 定义有符号数，输出无符号数格式
+//    short a = -0x1;
+//    int b = 0101;
+//    long c = 2147483467;
+//    printf("a = %#hx, b = %#o, c = %lu\n", a, b, c);
+//    // 定义无符号数，输出有符号数形式
+//    unsigned short x = 0111;
+//    unsigned short y = 0x8000;      // 十六进制，转二进制后最高位是 1，其余位是 0
+//    unsigned short z = 65535;       // 十进制，2 的 17 次方减 1，转二进制后所有位数都是 1
+//    printf("x = %hd, y = %hd, z = %hd\n", x, y, z);
+//    return 0;
+//}
+// 打印出的结果似乎不对，是因为原码补码反码
+// 原码就是带有符号位和数值位的二进制形式
+// 对于正数，它的反码和原码相同，不做任何变化；对于负数，它的反码是将原码中除<符号位>外的所有数值位取反，将 0 变为 1，将 1 变为 0
+// 对于正数，它的补码和原码相同，不做任何变化；对于负数，它的补码是反码加 1。
+// 在内存中，整数一律采用补码形式存储在内存中，读取整数时需要还原出原码
+
+
+
