@@ -63,5 +63,13 @@
 // 对于正数，它的补码和原码相同，不做任何变化；对于负数，它的补码是反码加 1。
 // 在内存中，整数一律采用补码形式存储在内存中，读取整数时需要还原出原码
 
-
+// 整数类型与字符类型实质上没有区别
+int main()
+{
+	int num = 65;
+	char word = 'a';
+	printf("int num = %d,char num = %c",num,num);
+	printf("int word = %d,char word = %c", word, word);
+	return 0;
+}
 
