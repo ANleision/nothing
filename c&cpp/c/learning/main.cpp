@@ -64,12 +64,24 @@
 // 在内存中，整数一律采用补码形式存储在内存中，读取整数时需要还原出原码
 
 // 整数类型与字符类型实质上没有区别
+//int main()
+//{
+//	int num = 65;
+//	char word = 'a';
+//	printf("int num = %d,char num = %c",num,num);
+//	printf("int word = %d,char word = %c", word, word);
+//	return 0;
+//}
+
+// 转义字符以\ （八进制） \x （十六进制）开头
 int main()
 {
-	int num = 65;
-	char word = 'a';
-	printf("int num = %d,char num = %c",num,num);
-	printf("int word = %d,char word = %c", word, word);
+	char a = '\60';
+	char b = '\x30';
+	char c = '\101';
+	char d = '\x5A';
+	printf("a = %c, b = %c\nc = %c, d = %c",a, b, c, d);
 	return 0;
 }
-
+// 转义字符初衷是用于ASCII编码，存在最大127的限制
+// 八进制最大为\127 十六为\x7f
