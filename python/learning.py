@@ -16,6 +16,14 @@
 #     addition += a
 #     a = a+b*10**i
 # print('算式的结果为：'+str(addition))
-print('输入一个自然数,获取二进制最右端的数然后打印为10进制')
-num = int(input('请输入数字:'))
-print('结果为：'+ str(num & (~num+1)))
+# print('输入一个自然数,获取二进制最右端的数然后打印为10进制')
+# num = int(input('请输入数字:'))
+# print('结果为：'+ str(num & (~num+1)))
+# print('对字符串进行切片：')
+# StringName = 'ANleision'
+# print('\n第一到第五的字符:')
+# print(StringName[0:5])# 不包含索引为5的字符
+# print(StringName[0:-4])# 不包含从左往右数第四个字符
+# print(StringName[:-4])
+# print('\n第六到第十的字符:')
+# print(StringName[-4:])
