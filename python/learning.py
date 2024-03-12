@@ -62,12 +62,29 @@
 如果它是偶数，则对它除以2，如此循环，最终都能够得到1。输入一个数n，输出变换序列。
 如n=6，得出序列6，3，10，5，16，8，4，2，1
 '''
-n = int(input('请输入正整数：'))
-if n <= 0:
-    print('输入错误，重新输入')
-while n != 1:
-    n = 3*n+1 if n%2 != 0 else n/2
-    print(str(int(n)),end=',' if n != 1 else '\n')
+# n = int(input('请输入正整数：'))
+# if n <= 0:
+#     print('输入错误，重新输入')
+# while n != 1:
+#     n = 3*n+1 if n%2 != 0 else n/2
+#     print(str(int(n)),end=',' if n != 1 else '\n')
 '''
-
+输入正整数n，输出不超过n且末尾数字为2的所有7的倍数的数字个数
 '''
+# n = int(input('输入正整数：'))
+# Number = []
+# if n > 42:
+#     for i in range (42, n, 10):
+#         if i % 7 == 0:
+#             Number.append(i)
+# print(len(Number))
+'''
+请你设计一个函数 print_avg，这个函数接收多个关键字参数作为学生的信息
+接收多个数字参数作为这个学生多次考试的成绩，请从学生信息中提取出学生的 student_name，student_age
+然后求出这个学生多次考试的平均成绩 Average（保留两位小数）
+'''
+def print_avg(*mark,**kw):
+    name = kw['student_name']
+    age = kw['student_age']
+    avg = sum(mark)/len(mark)
+    return f'name: {name}, age: {age}, avg: {avg:.2f}'
