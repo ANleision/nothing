@@ -83,8 +83,17 @@
 接收多个数字参数作为这个学生多次考试的成绩，请从学生信息中提取出学生的 student_name，student_age
 然后求出这个学生多次考试的平均成绩 Average（保留两位小数）
 '''
-def print_avg(*mark,**kw):
-    name = kw['student_name']
-    age = kw['student_age']
-    avg = sum(mark)/len(mark)
-    return f'name: {name}, age: {age}, avg: {avg:.2f}'
+# def print_avg(*mark,**kw):
+#     name = kw['student_name']
+#     age = kw['student_age']
+#     avg = sum(mark)/len(mark)
+#     return f'name: {name}, age: {age}, avg: {avg:.2f}'
+'''
+lambda排序
+'''
+list1 = [(1,'c'),(2,'b'),(3,'a')]
+print(list1,sorted(key=lambda x:x[1],reverse=True))# 保留原列表，创建新列表
+list1.sort(key=lambda x:x[1],reverse=True) # 在原列表上改动，按第二个元素排列，并降序
+print(list1)
+list1.sort(key=lambda x:x[0],reverse=True) # 在原列表上改动，按第一个元素排列，并降序
+print(list1)
